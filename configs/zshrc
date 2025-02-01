@@ -1,0 +1,48 @@
+# Make Antigen always available to Zsh
+# Change this path if you didn't install Antigen with Homebrew
+source /opt/homebrew/share/antigen/antigen.zsh
+
+# Clear Last Login line
+printf '\33c\e[3J'
+
+# misc
+export GOPATH=$HOME/.go
+
+# Defaults
+MAGIC_ENTER_GIT_COMMAND='git status'
+MAGIC_ENTER_OTHER_COMMAND='ls -lah .'
+
+# History management settings
+setopt hist_ignore_all_dups
+setopt hist_ignore_space
+HISTSIZE=9999
+
+# Load oh-my-zsh library
+antigen use oh-my-zsh
+
+# Non oh-my-zsh plugins
+antigen bundle unixorn/autoupdate-antigen.zshplugin
+antigen bundle zsh-users/zsh-autosuggestions
+antigen bundle zsh-users/zsh-completions
+antigen bundle zsh-users/zsh-syntax-highlighting
+
+# oh-my-zsh plugins
+antigen bundle command-not-found # depends on Homebrew
+antigen bundle git
+antigen bundle history-substring-search
+antigen bundle magic-enter
+
+# Prompt
+PS1='%F{blue}%~ %(?.%F{green}.%F{red})%#%f '
+
+# Aliases
+alias g="git"
+alias v="nvim"
+alias send="git add .; git commit --amend --no-edit; git push --force;"
+
+# zoxide
+eval "$(zoxide init zsh)"
+
+# Tell Antigen you're done
+antigen apply
+

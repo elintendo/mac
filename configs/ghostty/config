@@ -1,0 +1,8 @@
+# cmd+shift+, to restart
+
+font-size = 20
+theme = duckbones
+macos-titlebar-style = tabs
+
+#keybind = tab=next_tab
+keybind = shift+tab=previous_tab
